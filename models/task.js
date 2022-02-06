@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
       type:DataTypes.STRING(32),
       allowNull:false,
       validate:{
-        is:/^[a-zA-Z]{3,32}$/
+        is:/^[a-zA-Z0-9]{3,32}$/
       }
     }
   }, {

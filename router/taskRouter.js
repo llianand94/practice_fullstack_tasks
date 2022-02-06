@@ -5,6 +5,8 @@ const  { pagination } = require('../middlewares/pagination.mw');
 
 const taskRouter = Router();
 taskRouter.get('/', pagination, TaskController.getAllTasks);
-// tasksRouter.post('/:taskId', checkTask, TasksController.createTask);
+taskRouter.post('/', TaskController.createTask);
+taskRouter.patch('/:taskId', checkTask, TaskController.updateTask);
+taskRouter.delete('/:taskId', checkTask, TaskController.deleteTask);
 
 module.exports = taskRouter;

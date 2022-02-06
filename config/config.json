@@ -4,7 +4,9 @@
     "password": "postgres",
     "database": "practice_fullstack_tasks",
     "host": "localhost",
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "migrationStorage": "json",
+    "seederStorage": "json"
   },
   "test": {},
   "production": {}
