@@ -5,8 +5,7 @@ const {Task} = require('../models');
 module.exports.getAllTasks = async (req,res,next)=>{
   try{
     const {pagination} = req;
-    const allTasks = await Task.findAll({...pagination});
-    console.log(allTasks.lenght );
+    const allTasks = await Task.findAll({...pagination});    
     if(!allTasks){
       return next(createError(404, "Tasks are empty"))
     }
