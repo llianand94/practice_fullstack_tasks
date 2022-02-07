@@ -5,7 +5,7 @@ import {Formik, Form, Field} from 'formik';
 import * as tasksCreator from '../../actions/tasksCreator';
 
 
-const Index = () => {
+const TasksFormCreate = () => {
   const dispatch = useDispatch();
   const {createTaskRequest} = bindActionCreators(tasksCreator,dispatch);
   const onSubmit = (values, formikBag)=>{
@@ -31,4 +31,4 @@ const Index = () => {
   );
 }
 
-export default Index;
+export default TasksFormCreate;

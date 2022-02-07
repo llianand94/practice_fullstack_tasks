@@ -48,7 +48,7 @@ module.exports.deleteTask = async (req, res, next) =>{
       return next(createError(404, "Can't delete tasks by id"))
     }
 
-    res.status(200).send({payload:rows});
+    res.status(200).send({payload:{taskId,rows}});
   }catch(error){
     next(error);
   };

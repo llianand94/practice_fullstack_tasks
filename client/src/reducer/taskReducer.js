@@ -23,18 +23,41 @@ const handlers = {
   // }),
   [ACTIONS_TYPE.GET_TASK_REQUEST]:handleRequest,
   [ACTIONS_TYPE.CREATE_TASK_REQUEST]:handleRequest,
+  [ACTIONS_TYPE.DELETE_TASK_REQUEST]:handleRequest,
+  [ACTIONS_TYPE.PATCH_TASK_REQUEST]:handleRequest,
+
   [ACTIONS_TYPE.GET_TASK_RESOLVE]:produce((draftState, action)=>{
     const {payload:{tasks:newTasks}} = action;
     draftState.isFetching=false;
-    draftState.tasks.push(...newTasks);
+    draftState.tasks = newTasks;
   }),
   [ACTIONS_TYPE.CREATE_TASK_RESOLVE]:produce((draftState, action)=>{
     const {payload:{task}} = action;
     draftState.isFetching=false;
     draftState.tasks.push(task);
   }),
+  [ACTIONS_TYPE.DELETE_TASK_RESOLVE]:produce((draftState, action)=>{
+    const {payload: { taskId }} = action;
+    draftState.isFetching = false;
+    const newTasks = draftState.tasks.filter((task)=>task.id===taskId);
+    draftState.tasks = newTasks;
+  }),
+  [ACTIONS_TYPE.PATCH_TASK_RESOLVE]:produce((draftState, action)=>{
+    const {payload: { task: updatedTask }} = action;
+    draftState.isFetching = false;
+    const newTasks = draftState.tasks.map((task)=>{
+      if(task.id===updatedTask.id){
+        return updatedTask
+      }
+      return task
+    });
+    draftState.tasks = newTasks;
+  }),
+
   [ACTIONS_TYPE.GET_TASK_REJECT]:handleError,
   [ACTIONS_TYPE.CREATE_TASK_REJECT]:handleError,
+  [ACTIONS_TYPE.DELETE_TASK_REJECT]:handleError,
+  [ACTIONS_TYPE.PATCH_TASK_REJECT]:handleError
 }
 
 function taskReducer(state = initialState, action){

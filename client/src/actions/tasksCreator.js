@@ -26,3 +26,27 @@ export const createTaskReject = ({error}) =>({
   type: ACTIONS_TYPE.CREATE_TASK_REJECT,
   payload: {error}
 });
+export const deleteTaskRequest = ({taskId}) =>({
+  type: ACTIONS_TYPE.DELETE_TASK_REQUEST,
+  payload: {taskId}
+});
+export const deleteTaskResolve = ({taskId, rows}) =>({
+  type: ACTIONS_TYPE.DELETE_TASK_RESOLVE,
+  payload: {taskId, rows}
+});
+export const deleteTaskReject = ({error}) =>({
+  type: ACTIONS_TYPE.DELETE_TASK_REJECT,
+  payload: {error}
+});
+export const updateTaskRequest = ({values}) =>({
+  type: ACTIONS_TYPE.PATCH_TASK_REQUEST,
+  payload: {values}
+});
+export const updateTaskResolve = ({task}) =>({
+  type: ACTIONS_TYPE.PATCH_TASK_RESOLVE,
+  payload: {task}
+});
+export const updateTaskReject = ({error}) =>({
+  type: ACTIONS_TYPE.PATCH_TASK_REJECT,
+  payload: {error}
+});

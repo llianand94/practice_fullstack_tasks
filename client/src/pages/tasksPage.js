@@ -1,13 +1,15 @@
 import React from 'react';
 import TasksList from '../components/TasksList';
-import TasksForm from '../components/TasksForm';
+import TasksFormCreate from '../components/TasksFormCreate';
+import TaskFormUpdate from '../components/TaskFormUpdate';
 
 const TasksPage = (props) => {
   
   return (
     <section>
       <h2>Tasks page</h2>
-      <TasksForm />
+      <TasksFormCreate />
+      <TaskFormUpdate />
       <TasksList />
     </section>
   );
