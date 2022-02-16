@@ -39,7 +39,8 @@ const handlers = {
   [ACTIONS_TYPE.DELETE_TASK_RESOLVE]:produce((draftState, action)=>{
     const {payload: { taskId }} = action;
     draftState.isFetching = false;
-    const newTasks = draftState.tasks.filter((task)=>task.id===taskId);
+    const newTasks =  draftState.tasks.filter((task)=>task.id===taskId);
+   
     draftState.tasks = newTasks;
   }),
   [ACTIONS_TYPE.PATCH_TASK_RESOLVE]:produce((draftState, action)=>{

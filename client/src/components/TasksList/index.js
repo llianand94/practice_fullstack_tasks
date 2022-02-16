@@ -9,22 +9,24 @@ const TasksList = (props) => {
   const {tasks,isFetching,error} = useSelector(({tasks})=>tasks);
   const getTasks = ({limit, offset}={})=>{getTaskRequest({limit, offset})};
   const deleteTask = (taskId)=>{deleteTaskRequest({taskId})};
+  
+ 
   useEffect(() => {
     getTasks();
-  }, []);
+  },[]);
   return (
+    
   <ul>
+    
     {isFetching && 'Now fetching process'}
     {error && error.message}
+    {console.log(error)}
     <button onClick={getTasks}>Get ALL</button>
     
     {tasks.map((elem, index)=>(
       <li key={index}>
-        <span>{elem.id}.</span>
-        <span> Text: {elem.body}</span>
-        <span> Author: {elem.author}</span>
-        
-       <button onClick={()=>{deleteTask(elem.id)}}>DEL</button>
+        <span>{elem.id}. Author: {elem.author} Text: {elem.body}</span>
+       <button style={{"margin-left":"10px"}}onClick={()=>{deleteTask(elem.id)}}>DEL</button>
        </li>
       )
     )}      
